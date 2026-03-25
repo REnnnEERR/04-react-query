@@ -4,7 +4,7 @@ import { useQuery, keepPreviousData } from '@tanstack/react-query';
 import ReactPaginate from 'react-paginate';
 
 import type { Movie } from '../../types/movie';
-import { fetchMovies } from '../../services/movieServices'; 
+import { fetchMovies } from '../../services/movieService'; 
 import SearchBar from '../SearchBar/SearchBar';
 import MovieGrid from '../MovieGrid/MovieGrid';
 import MovieModal from '../MovieModal/MovieModal'; 
