@@ -5,12 +5,15 @@ import 'modern-normalize/modern-normalize.css';
 import App from './components/App/App';
 import './index.css';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
 const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  
-  <QueryClientProvider client={queryClient}>
-    <App />
+  <React.StrictMode>
+    
+    <QueryClientProvider client={queryClient}>
+      <App />
       <Toaster position="top-right" reverseOrder={false} />
-  </QueryClientProvider>
+    </QueryClientProvider>
+  </React.StrictMode>
 );

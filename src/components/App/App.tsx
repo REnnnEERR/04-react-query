@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import toast from 'react-hot-toast';
-import { useQuery } from '@tanstack/react-query'; // Додали хук
-import ReactPaginate from 'react-paginate'; // Додали пагінацію
+import { useQuery, keepPreviousData } from '@tanstack/react-query';
+import ReactPaginate from 'react-paginate';
 import type { Movie } from '../../types/movie';
 import { fetchMovies } from '../../services/movieServices'; 
 import SearchBar from '../SearchBar/SearchBar';
@@ -17,11 +17,11 @@ export default function App() {
   const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
 
   // Головний хук React Query
-  const { data, isLoading, isError, error } = useQuery({
+  const { data, isLoading, isError } = useQuery({
     queryKey: ['movies', query, page], // Ключ залежить від запиту і сторінки
     queryFn: () => fetchMovies(query, page),
     enabled: query !== '', // Не робимо запит, поки порожньо
-    placeholderData: (previousData) => previousData, // Щоб не блимало при зміні сторінок
+    placeholderData: keepPreviousData,
   });
 
   const handleSearch = (newQuery: string) => {

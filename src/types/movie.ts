@@ -7,12 +7,10 @@ export interface Movie {
   release_date: string;
   vote_average: number;
 }
- export interface MovieResponse {
-  id: number;
-  poster_path: string;
-  backdrop_path: string;
-  title: string;
-  overview: string;
-  release_date: string;
-  vote_average: number;
+
+export interface FetchMoviesResponse {
+  page: number;
+  results: Movie[];
+  total_pages: number;
+  total_results: number;
 }
