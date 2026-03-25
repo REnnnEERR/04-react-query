@@ -52,20 +52,19 @@ export default function App() {
         <MovieGrid movies={movies} onSelect={handleSelectMovie} />
       )}
 
-      {/* Пагінація з ТЗ */}
       {totalPages > 1 && (
-        <ReactPaginate
-          pageCount={totalPages > 500 ? 500 : totalPages}
-          pageRangeDisplayed={5}
-          marginPagesDisplayed={1}
-          onPageChange={({ selected }) => setPage(selected + 1)}
-          forcePage={page - 1}
-          containerClassName={css.pagination}
-          activeClassName={css.active}
-          nextLabel="→"
-          previousLabel="←"
-        />
-      )}
+  <ReactPaginate
+    pageCount={totalPages}
+    pageRangeDisplayed={5}
+    marginPagesDisplayed={1}
+    onPageChange={({ selected }) => setPage(selected + 1)}
+    forcePage={page - 1}
+    containerClassName={css.pagination}
+    activeClassName={css.active}
+    nextLabel="→"
+    previousLabel="←"
+  />
+)}
 
       {!isLoading && movies.length === 0 && !isError && query !== '' && (
         <p style={{ textAlign: 'center', marginTop: '20px' }}>
