@@ -1,0 +1,14 @@
+/* Pagination.module.css */
+.pagination {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.active {
+    font-weight: bold;
+    color: blue;
+    /* або твій колір */
+}

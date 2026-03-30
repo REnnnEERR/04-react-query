@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import toast from 'react-hot-toast';
 import { useQuery, keepPreviousData } from '@tanstack/react-query';
-import ReactPaginate from 'react-paginate';
+// import ReactPaginate from 'react-paginate';
+import Pagination from '../Pagination/Pagination';
 
 import type { Movie } from '../../types/movie';
 import { fetchMovies, type FetchMoviesResponse } from '../../services/movieService';
@@ -52,7 +53,7 @@ export default function App() {
     <div className={css.container}>
       <SearchBar onSubmit={handleSearch} />
       
-      {totalPages > 1 && (
+      {/* {totalPages > 1 && (
         <ReactPaginate
           pageCount={totalPages}
           pageRangeDisplayed={5}
@@ -64,7 +65,15 @@ export default function App() {
           nextLabel="→"
           previousLabel="←"
         />
-      )}
+      )} */}
+
+      {totalPages > 1 && (
+  <Pagination 
+    totalPages={totalPages > 500 ? 500 : totalPages} 
+    currentPage={page} 
+    onPageChange={(nextPage) => setPage(nextPage)} 
+  />
+)}
 
       {isError && <ErrorMessage />}
       {isFetching && <Loader />}
